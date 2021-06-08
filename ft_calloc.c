@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 15:36:13 by user42            #+#    #+#             */
-/*   Updated: 2021/06/04 17:25:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/08 17:40:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 void *calloc(size_t nitems, size_t size)
 {
-    
+    size_t	total_size;
+	void	*allocated;
+
+	total_size = nitems * size;
+	allocated = malloc(total_size);
+	if (allocated == NULL)
+		return (NULL);
+	ft_bzero(allocated, total_size);
+	return (allocated);
 }
