@@ -6,7 +6,7 @@
 #    By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/10 11:53:58 by user42            #+#    #+#              #
-#    Updated: 2021/06/13 23:30:02 by marcrodr         ###   ########.fr        #
+#    Updated: 2021/06/14 12:48:17 by marcrodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ RM			=		rm -f
 LIB			=		ar -rcs
 CC			=		gcc
 CFLAGS		=		-Wall -Wextra -Werror
+INCLUDE 	=		./libft.h
 
 SRCS		=		ft_atoi.c\
 					ft_bzero.c\
@@ -69,6 +70,6 @@ so:
 	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
 .c.o:
-			@$(CC) $(CFLAGS) -c -I . -fPIC $< -o $(<:.c=.o)
+			@$(CC) $(CFLAGS) -c -I $(INCLUDE) $< -o $(<:.c=.o) 
 
 .PHONY:		all clean fclean re
