@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:41 by user42            #+#    #+#             */
-/*   Updated: 2021/06/04 17:33:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 22:01:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,4 @@ size_t    ft_strlcpy(char *dst, const char *src, size_t dstsize)
     }
     dst[i] = '\0';
     return (len);
-}
-
-int main()
-{
-    int x;
-    char test[] = "olar";
-    char ola[] = "test";
-
-   x =  ft_strlcpy(test, ola, 2);
-   printf("%d\n", x);
 }

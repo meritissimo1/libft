@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 15:36:13 by user42            #+#    #+#             */
-/*   Updated: 2021/06/08 17:40:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 15:37:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *calloc(size_t nitems, size_t size)
+void *ft_calloc(size_t nitems, size_t size)
 {
     size_t	total_size;
 	void	*allocated;

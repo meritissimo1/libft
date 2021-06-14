@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 15:36:17 by user42            #+#    #+#             */
-/*   Updated: 2021/06/13 22:30:31 by marcrodr         ###   ########.fr       */
+/*   Created: 2021/06/09 22:25:36 by user42            #+#    #+#             */
+/*   Updated: 2021/06/09 23:22:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int        ft_isalnum(int c)
+char *ft_strtrim(char const *s1, char const *set)
 {
-    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-        || (c >= '0' && c <= '9'))
-        return (1);
-    return (0);
+    if (s1 == NULL || set == NULL)
+        return (NULL);
+    while ()
+                    
 }

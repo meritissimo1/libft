@@ -6,32 +6,36 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:50 by user42            #+#    #+#             */
-/*   Updated: 2021/06/04 17:33:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 17:22:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strnstr (const char	*big, const char *little, size_t len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-    int l;
-    int b;
+	char	*haystack;
+	char	*needle;
+	char	*needle_in_haystack;
+	size_t	count_haystack;
+	size_t	count_needle;
 
-    b = 0;
-    if (little[0] == '\0')
-        return ((char *)big);
-    while (*big)
-    {
-        l = 0;
-        while (big[b + l] == little[l] && (b + l) < len)
-        {
-            if (big[b + l] == '\0' && *little[l] == '\0')
-                return ((char *)&big[b]);
-            l++;
-        }
-        if (little[l] == '\0')
-            return ((char *) big + b);
-        b++;
-    }
-    return (0);
+	count_haystack = 0;
+	haystack = (char *)str;
+	if (*to_find == '\0')
+		return (haystack);
+	while (*haystack != '\0')
+	{
+		count_needle = 0;
+		needle = (char *)to_find;
+		needle_in_haystack = haystack;
+		while (*needle_in_haystack++ == *needle && *needle++ != '\0' &&
+											count_haystack + count_needle < n)
+			++count_needle;
+		if (*needle == '\0')
+			return (haystack);
+		++haystack;
+		++count_haystack;
+	}
+	return (NULL);
 }

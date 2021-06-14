@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 16:11:31 by user42            #+#    #+#             */
-/*   Updated: 2021/06/08 17:40:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 11:32:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ char    *ft_strdup(const char *s1)
     if (new_str == NULL)
         return (NULL);
     ft_memcpy(new_str, s1, len);
-    return (new_str);
+        return (new_str);
 }

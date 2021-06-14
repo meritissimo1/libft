@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:14 by user42            #+#    #+#             */
-/*   Updated: 2021/06/07 16:22:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 22:13:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t i;
 
-	if (dst == NULL && src == NULL || n == 0)
+	if (dst == NULL && src == NULL)
 		return (NULL);
 	i = 0;
 	while (i < n)

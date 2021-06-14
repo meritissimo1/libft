@@ -6,13 +6,13 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:27:00 by user42            #+#    #+#             */
-/*   Updated: 2021/06/04 17:33:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/10 17:24:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *strrchr(const char *str, int c)
+char    *strrchr(const char *str, int c)
 {
     int i;
     int len;
@@ -29,4 +29,5 @@ char *strrchr(const char *str, int c)
         i++;
         str--;
     }
+    return (0);
 }
