@@ -6,7 +6,7 @@
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:37 by user42            #+#    #+#             */
-/*   Updated: 2021/06/14 12:22:10 by marcrodr         ###   ########.fr       */
+/*   Updated: 2021/06/14 12:29:46 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
         len++;
     }
     dst[i] = '\0';
-    return (ft_strlen(dst) + ft_strlen(&dst[len]));
+    return (ft_strlen(dst) + ft_strlen(&src[len]));
 }
+
