@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 15:36:53 by user42            #+#    #+#             */
-/*   Updated: 2021/06/04 17:25:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/13 23:37:58 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isprint(int n)
+int     ft_isprint(int n)
 {
-    if (n >= 0 && n <= 31)
-        return (0);
-    return (1);
+    return (n >= 32 && n <= 126);
 }

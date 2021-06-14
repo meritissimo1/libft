@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/10 11:53:58 by user42            #+#    #+#              #
-#    Updated: 2021/06/10 22:05:45 by user42           ###   ########.fr        #
+#    Updated: 2021/06/13 23:30:02 by marcrodr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		libft.a
 RM			=		rm -f
-LIB			=		ar rcs
+LIB			=		ar -rcs
 CC			=		gcc
 CFLAGS		=		-Wall -Wextra -Werror
 
@@ -53,7 +53,7 @@ OBJS	=	$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			$(LIB) $(NAME)		
+			$(LIB) $(NAME) $(OBJS)	
 
 clean:		
 			$(RM) $(OBJS)
