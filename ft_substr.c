@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 12:22:50 by user42            #+#    #+#             */
-/*   Updated: 2021/06/15 16:34:29 by marcrodr         ###   ########.fr       */
+/*   Created: 2021/06/15 17:49:28 by marcrodr          #+#    #+#             */
+/*   Updated: 2021/06/15 18:03:10 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*res;
-	size_t	len;
-	size_t	x;
+	size_t	s_length;
+	char	*s_start;
+	char	*new_string_start;
+	char	*new_string;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s == NULL)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	res = malloc(len + 1);
-	if (res == NULL)
+	new_string_start = malloc(sizeof(char) * (len + 1));
+	if (new_string_start == NULL)
 		return (NULL);
-	x = 0;
-	while (*s1)
-		res[x++] = *s1++;
-	while (*s2)
-		res[x++] = *s2++;
-	res[x] = '\0';
-	return (res);
+	new_string = new_string_start;
+	s_length = ft_strlen(s);
+	s_start = (char *)s;
+	s += start;
+	while ((size_t)(s - s_start) < s_length && len--)
+		*new_string++ = *s++;
+	*new_string = '\0';
+	return (new_string_start);
 }

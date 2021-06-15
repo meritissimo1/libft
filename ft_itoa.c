@@ -3,60 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 22:01:58 by user42            #+#    #+#             */
-/*   Updated: 2021/06/10 17:10:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/15 16:44:33 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static    void    ft_mount_string(long int nbr, char *str, int nlen)
+static	size_t	get_width(int n)
 {
-    *(str + nlen--) = nbr % 10 + '0';
-    nbr /= 10;
-    if (nbr > 0)
-        ft_mount_string(nbr, str, nlen);
+	size_t	width;
+
+	width = (n <= 0);
+	while (n)
+	{
+		n /= 10;
+		width++;
+	}
+	return (width);
 }
 
-static    int    ft_intlen(int n)
+static	char	*strrev(char *str)
 {
-    int    nlen;
+	size_t	i;
+	size_t	len;
+	char	tmp;
 
-    nlen = 0;
-    while (n)
-    {
-        n = n / 10;
-        nlen++;
-    }    
-    return (nlen);
+	if (!str || !*str)
+		return (str);
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len / 2)
+	{
+		tmp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = tmp;
+		i++;
+	}
+	return (str);
 }
 
-char    *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-    char        *str;
-    long int    n_long;
-    int            nlen;
-    int            nbr;
-    int            trigger_negative;
+	char			*num;
+	int				rem;
+	size_t			i;
+	const char		neg = (n < 0);
+	const size_t	width = get_width(n);
 
-    nbr = n;
-    n_long = (long int)nbr;
-    nlen = ft_intlen(n);
-    trigger_negative = 0;
-    if (n < 0)
-    {
-        trigger_negative = 1;
-        nlen += 1;
-        n_long *= -1;
-    }
-    else if (n == 0)
-        nlen += 1;
-    str = (char *)malloc(nlen + 1);
-    *(str + nlen--) = '\0';
-    ft_mount_string(n_long, str, nlen);
-    if (trigger_negative)
-        *str = '-';
-    return (str);
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	num = ft_calloc(width + 1, sizeof(char));
+	if (!num)
+		return (NULL);
+	if (neg)
+		n = -n;
+	i = 0;
+	while (i < width)
+	{
+		rem = n % 10;
+		n = n / 10;
+		num[i] = "0123456789"[rem];
+		i++;
+	}
+	if (neg)
+		num[i - 1] = '-';
+	return (strrev(num));
 }
