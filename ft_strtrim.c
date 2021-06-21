@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 22:25:36 by user42            #+#    #+#             */
-/*   Updated: 2021/06/19 10:35:01 by marcrodr         ###   ########.fr       */
+/*   Updated: 2021/06/20 18:29:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s1++;
 	i = ft_strlen(s1);
 	while (i && ft_strchr(set, s1[i]))
-	i = ft_strlen(s1); // pega o índice do final da string
-	while (i && ft_strchr(set, s1[i])) // percorre s1 do fim até não encontrar set.
+	i = ft_strlen(s1); 
+	while (i && ft_strchr(set, s1[i]))
 		i--;
 	return (ft_substr(s1, 0, i + 1));
 }
