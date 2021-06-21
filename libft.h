@@ -31,9 +31,9 @@ size_t    ft_strlen(const char *str);
 
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strnstr(const char *str, const char *to_find, size_t n);
-char    *strrchr(const char *str, int c);
+char	*ft_strrchr(const char *str, int c);
 char    *ft_strchr(const char *str, int c);
-char    *ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1, char const *set);
 char    *ft_itoa(int n);
 
 char    *ft_strdup(const char *s1);
@@ -45,6 +45,8 @@ void    ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char    *ft_strjoin(char const *s1, char const *s2);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
+char	**ft_split(char const *s, char c);
+
 
 
 #endif
