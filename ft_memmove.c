@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:21 by user42            #+#    #+#             */
-/*   Updated: 2021/06/11 18:10:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 16:40:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char *source_cast;
-	unsigned char *destination_cast;
+	unsigned char	*source_cast;
+	unsigned char	*destination_cast;
 
 	if ((dest == NULL && src == NULL) || n == 0)
 		return (dest);

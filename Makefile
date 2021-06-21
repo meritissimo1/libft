@@ -44,10 +44,10 @@ RM            =     rm -f
 all:        $(NAME)
 
 $(NAME):    $(OBJS)
-				@ar rcs $(NAME) $(OBJS)
+				@ar -rcs $(NAME) $(OBJS)
 
-%.o:        %.c
-				@$(CC) -c $(FLAGS) $<
+.c.o:
+				@$(CC) $(CFLAGS) -c -fPIC $< -o $(<:.c=.o)
 
 clean:
 				@$(RM) $(OBJS)

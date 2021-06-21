@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:50 by user42            #+#    #+#             */
-/*   Updated: 2021/06/15 16:02:03 by marcrodr         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:05:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char *haystack_start;
-	char *needle_pointerator;
-	char *possible_match;
+	char	*haystack_start;
+	char	*needle_pointerator;
+	char	*possible_match;
 
 	haystack_start = (char *)haystack;
 	if (*needle == '\0')
@@ -25,9 +25,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		needle_pointerator = (char *)needle;
 		possible_match = (char *)haystack;
-		while (*needle_pointerator &&
-			*haystack == *needle_pointerator &&
-			(unsigned long)(haystack - haystack_start) < len)
+		while (*needle_pointerator
+			&& *haystack == *needle_pointerator
+			&& (unsigned long)(haystack - haystack_start) < len)
 		{
 			needle_pointerator++;
 			haystack++;
