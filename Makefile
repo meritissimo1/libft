@@ -59,5 +59,7 @@ re:            fclean all
 
 so:
 				gcc -nostartfiles -shared -o libft.so $(OBJS)
+norme:
+				norminette *.c 
 
 .PHONY:        all clean fclean re

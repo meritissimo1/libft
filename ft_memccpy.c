@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 16:31:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:39:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
+			return (&dst[i] + 1);
 		i++;
 	}
 	return (0);

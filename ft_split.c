@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 12:29:01 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 16:45:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 19:23:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ft_word_dup(const char *s, size_t start, size_t finish)
 
 	i = 0;
 	printable = 0;
-	word = malloc(((finish - start) + 1) * sizeof(char));
+	word = ft_calloc(((finish - start) + 1), sizeof(char));
 	while (start < finish)
 	{
 		if (ft_isprint(s[start]))
@@ -50,7 +50,6 @@ static char	*ft_word_dup(const char *s, size_t start, size_t finish)
 		i++;
 		start++;
 	}
-	word[i] = '\0';
 	if (printable > 0)
 		return (word);
 	else
@@ -64,7 +63,7 @@ char	**ft_split(char const *s, char c)
 	size_t	j;
 	int		index;
 
-	strs = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	strs = ft_calloc((ft_count_words(s, c) + 1), sizeof(char *));
 	if (!s || !strs)
 		return (0);
 	i = 0;
