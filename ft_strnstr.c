@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:26:50 by user42            #+#    #+#             */
-/*   Updated: 2021/06/21 17:05:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 23:15:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*haystack_start;
-	char	*needle_pointerator;
-	char	*possible_match;
+	size_t	i;
+	int		j;
+	int		nlen;
 
-	haystack_start = (char *)haystack;
-	if (*needle == '\0')
-		return (haystack_start);
-	while (*haystack)
+	nlen = ft_strlen(needle);
+	if (nlen == 0)
+		return ((char *)&haystack[0]);
+	i = 0;
+	while (haystack[i] != '\0')
 	{
-		needle_pointerator = (char *)needle;
-		possible_match = (char *)haystack;
-		while (*needle_pointerator
-			&& *haystack == *needle_pointerator
-			&& (unsigned long)(haystack - haystack_start) < len)
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j) < len)
 		{
-			needle_pointerator++;
-			haystack++;
+			if (haystack[i + j] == '\0' && needle[j] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
 		}
-		if (*needle_pointerator == '\0')
-			return (possible_match);
-		haystack = possible_match + 1;
+		if (needle[j] == '\0')
+			return ((char *)haystack + i);
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
