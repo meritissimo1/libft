@@ -37,7 +37,7 @@ FILES         =     ft_atoi.c\
 OBJS          =     $(FILES:.c=.o)
 FLAGS         =     -Wall -Wextra -Werror
 NAME          =     libft.a
-RM            =     rm -f
+RM            =     rm -rf
 
 ###################################################################
 
