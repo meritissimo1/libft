@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2022/02/08 08:45:22 by marcrodr         ###   ########.fr       */
+/*   Created: 2022/02/10 16:55:25 by marcrodr          #+#    #+#             */
+/*   Updated: 2022/02/14 10:07:41 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int	ft_isspace(char c)
 {
-	size_t	i;
-
-	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
-		i++;
-	}
+	if (c == ' ' || c == '\n' || c == '\r' || c == '\t'
+		|| c == '\v' || c == '\f')
+		return (1);
 	return (0);
 }

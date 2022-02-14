@@ -3,65 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 22:01:58 by user42            #+#    #+#             */
-/*   Updated: 2021/06/23 20:52:58 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/14 10:02:49 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_createstr(long int new_n, int i, int verify_n)
+static	size_t	get_width(int n)
 {
-	long int	aux;
-	char		*str;
+	size_t	width;
 
-	str = (char *)ft_calloc(i + 1, sizeof(char));
-	if (!str)
-		return (0);
-	if (verify_n)
+	width = (n <= 0);
+	while (n)
 	{
-		str[0] = 45;
+		n /= 10;
+		width++;
 	}
-	str[i--] = 0;
-	while (i >= 0)
+	return (width);
+}
+
+static	char	*strrev(char *str)
+{
+	size_t	i;
+	size_t	len;
+	char	tmp;
+
+	if (!str || !*str)
+		return (str);
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len / 2)
 	{
-		aux = new_n % 10;
-		new_n = new_n / 10;
-		str[i] = aux + '0';
-		i--;
-		if (i == 0 && verify_n)
-			i--;
+		tmp = str[i];
+		str[i] = str[len - 1 - i];
+		str[len - 1 - i] = tmp;
+		i++;
 	}
 	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*str;
-	long int	new_n;
-	long int	aux;
-	int			i;
-	int			verify_n;
+	char			*num;
+	int				rem;
+	size_t			i;
+	const char		neg = (n < 0);
+	const size_t	width = get_width(n);
 
-	verify_n = 0;
-	new_n = n;
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	num = ft_calloc(width + 1, sizeof(char));
+	if (!num)
+		return (NULL);
+	if (neg)
+		n = -n;
 	i = 0;
-	if (n == 0)
-		i = 1;
-	if (n < 0)
+	while (i < width)
 	{
-		new_n = (long int)n * -1;
-		verify_n = 1;
+		rem = n % 10;
+		n = n / 10;
+		num[i] = "0123456789"[rem];
 		i++;
 	}
-	aux = new_n;
-	while (aux)
-	{
-		aux = aux / 10;
-		i++;
-	}
-	str = (char *)ft_createstr(new_n, i, verify_n);
-	return (str);
+	if (neg)
+		num[i - 1] = '-';
+	return (strrev(num));
 }

@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_ullitoa_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2022/02/08 08:45:22 by marcrodr         ###   ########.fr       */
+/*   Created: 2022/02/08 16:42:20 by marcrodr          #+#    #+#             */
+/*   Updated: 2022/02/14 10:03:06 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_ullitoa_base(unsigned long long int n, char *base)
 {
-	size_t	i;
+	unsigned long long int	nbr;
+	char					*a;
+	int						b_len;
+	int						size;
 
-	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
+	b_len = ft_strlen(base);
+	nbr = n;
+	size = 1;
+	n /= b_len;
+	while (n && size++)
+		n /= b_len;
+	a = (char *)malloc(size + 1);
+	if (!a)
+		return (0);
+	a[size--] = '\0';
+	while (nbr > 0)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
-		i++;
+		a[size--] = base[nbr % b_len];
+		nbr /= b_len;
 	}
-	return (0);
+	if (size == 0 && a[1] == '\0')
+		a[0] = '0';
+	return (a);
 }

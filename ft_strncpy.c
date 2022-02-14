@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2022/02/08 08:45:22 by marcrodr         ###   ########.fr       */
+/*   Created: 2022/02/08 18:04:46 by marcrodr          #+#    #+#             */
+/*   Updated: 2022/02/14 10:04:33 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	size_t	i;
+	char			*start;
+	unsigned int	count;
 
-	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
+	count = 0;
+	start = dest;
+	while ((src[count] != '\0') && count < n)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
-		i++;
+		*start = src[count];
+		start++;
+		count++;
 	}
-	return (0);
+	while (count < n)
+	{
+		*start = '\0';
+		start++;
+		count++;
+	}
+	return (dest);
 }

@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_hextoi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2022/02/08 08:45:22 by marcrodr         ###   ########.fr       */
+/*   Created: 2022/02/08 08:25:52 by marcrodr          #+#    #+#             */
+/*   Updated: 2022/02/14 10:05:05 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int	ft_hexstrtoi(char *hex)
 {
-	size_t	i;
+	int	val;
+	int	byte;
+	int	i;
 
 	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
+	val = 0;
+	while (hex[i])
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
+		if (i == 0 && hex[i] == '0' && hex[i + 1] == 'x')
+			i += 2;
+		byte = hex[i];
+		if (byte >= '0' && byte <= '9')
+			byte = byte - '0';
+		else if (byte >= 'a' && byte <= 'f')
+			byte = byte - 'a' + 10;
+		else if (byte >= 'A' && byte <= 'F')
+			byte = byte - 'A' + 10;
+		val = (val << 4) | (byte & 0xF);
 		i++;
 	}
-	return (0);
+	return (val);
 }

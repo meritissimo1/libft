@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr < marcrodr@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 17:25:58 by user42            #+#    #+#             */
-/*   Updated: 2022/02/08 08:45:22 by marcrodr         ###   ########.fr       */
+/*   Created: 2022/02/08 08:03:54 by marcrodr          #+#    #+#             */
+/*   Updated: 2022/02/08 08:04:11 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	ft_free_split(char **split)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	while (i < n)
+	while (split[i])
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if ((unsigned char)c == ((unsigned char *)src)[i])
-			return (dst + i + 1);
+		free(split[i]);
 		i++;
 	}
-	return (0);
+	free(split);
 }

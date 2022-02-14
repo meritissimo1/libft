@@ -31,6 +31,15 @@ FILES         =     ft_atoi.c\
 					ft_strrchr.c\
 					ft_strtrim.c\
 					ft_substr.c\
+					ft_free_split.c\
+					get_next_line.c\
+					ft_hextoi.c\
+					ft_numbers.c\
+					ft_ullitoa_base.c\
+					ft_strncpy.c\
+					ft_isspace.c\
+					ft_ftoa.c\
+					ft_printf.c\
 					ft_tolower.c\
 					ft_toupper.c
 
